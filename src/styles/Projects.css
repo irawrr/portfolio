@@ -27,6 +27,12 @@ h1 {
     transition: transform 0.2s, box-shadow 0.2s;
     margin-bottom: 20px;
     margin-top: 20px;
+    width: 50%;
+    margin-left: 23.8%;
+}
+
+.project-card a {
+    margin-right: 20px;
 }
 
 .project-card:hover {
@@ -59,7 +65,7 @@ h1 {
 
 .filter {
     margin-bottom: 20px;
-    margin-left: 260px;
+    margin-left: 400px;
 }
 
 .filter label {
@@ -83,4 +89,19 @@ h1 {
 .filter select:focus {
     border-color: #4d4d4d;
     outline: none;
+}
+
+button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #9bd99c;
 }

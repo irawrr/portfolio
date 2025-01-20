@@ -1,0 +1,41 @@
+.add-project-form {
+    margin: 20px 0;
+    padding: 40px;
+    background-color: #363636;
+    border: 1px solid #4f4f4f;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin-left: 11%;
+}
+
+.add-project-form h2 {
+    font-size: 24px;
+    color: #8077d0;
+    margin-bottom: 15px;
+}
+
+.add-project-form input,
+.add-project-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #5b5b5b;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #1e1e1e;
+    margin-bottom: 20px;
+}
+
+.add-project-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.add-project-form button:hover {
+    background-color: #45a049;
+}

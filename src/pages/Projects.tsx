@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../store/store';
+import { setProjects, removeProject } from '../store/projectsSlice';
+import AddProject from '../components/AddProject';
 import '../styles/Projects.css';
 
-interface Project {
-    id: number;
-    title: string;
-    description: string;
-    technologies: string[];
-    link: string;
-}
-
-const projects: Project[] = [
-    { id: 1, title: 'Портфолио', description: 'Сайт с информацией обо мне.', technologies: ['React', 'TypeScript'], link: '#' },
-    { id: 2, title: 'Магазин', description: 'Интернет-магазин с корзиной.', technologies: ['Redux', 'JavaScript'], link: '#' },
-    { id: 3, title: 'Чат', description: 'Простой чат с WebSocket.', technologies: ['Node.js', 'React'], link: '#' },
-];
-
 const Projects: React.FC = () => {
+    const dispatch: AppDispatch = useDispatch();
+    const projects = useSelector((state: RootState) => state.projects.items);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTech, setSelectedTech] = useState('All');
 
+    useEffect(() => {
+        const savedProjects = localStorage.getItem('projects');
+        if (savedProjects) {
+            dispatch(setProjects(JSON.parse(savedProjects)));
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        localStorage.setItem('projects', JSON.stringify(projects));
+    }, [projects]);
+
+    const handleRemove = (id: number) => {
+        dispatch(removeProject(id));
+    };
+
+    // Фильтрация проектов по выбранной технологии
     const filteredProjects = projects.filter((project) =>
         selectedTech === 'All' ? true : project.technologies.includes(selectedTech)
     );
@@ -25,6 +34,8 @@ const Projects: React.FC = () => {
     return (
         <div className="projects-container">
             <h1>Проекты</h1>
+
+            {/* Фильтр */}
             <div className="filter">
                 <label>Фильтр:</label>
                 <select onChange={(e) => setSelectedTech(e.target.value)} value={selectedTech}>
@@ -36,6 +47,8 @@ const Projects: React.FC = () => {
                     <option value="Redux">Redux</option>
                 </select>
             </div>
+
+            {/* Список проектов */}
             <div className="projects-list">
                 {filteredProjects.map((project) => (
                     <div key={project.id} className="project-card">
@@ -43,9 +56,27 @@ const Projects: React.FC = () => {
                         <p>{project.description}</p>
                         <p><strong>Технологии:</strong> {project.technologies.join(', ')}</p>
                         <a href={project.link} target="_blank" rel="noopener noreferrer">Посмотреть проект</a>
+                        <button onClick={() => handleRemove(project.id)}>Удалить проект</button>
                     </div>
                 ))}
             </div>
+
+            {/* Кнопка "Плюс" для добавления проекта */}
+            <button className="add-project-button" onClick={() => setIsModalOpen(true)}>
+                +
+            </button>
+
+            {/* Модальное окно с формой добавления проекта */}
+            {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <button className="close-modal" onClick={() => setIsModalOpen(false)}>
+                            ✖
+                        </button>
+                        <AddProject onClose={() => setIsModalOpen(false)} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

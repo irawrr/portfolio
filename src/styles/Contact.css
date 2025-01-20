@@ -75,11 +75,8 @@
     background-color: #695ec2;
 }
 
-.contacts-footer a {
-    color: #8178d0;
-    text-decoration: none;
+input:focus, textarea:focus {
+    border-color: #8178d0;
+    outline: none;
 }
 
-.contacts-footer a:hover {
-    text-decoration: underline;
-}

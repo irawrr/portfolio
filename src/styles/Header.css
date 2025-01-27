@@ -1,0 +1,31 @@
+/* Стили для header */
+.header {
+    background-color: rgba(248, 249, 250, 0.79);
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 100px;
+}
+
+/* Стили для навигационного списка */
+.nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Стили для ссылок */
+.nav-list li a {
+    text-decoration: none; /* Убирает подчеркивание */
+    color: #333;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: #7e75ce; /* Цвет при наведении */
+}

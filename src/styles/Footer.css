@@ -1,0 +1,38 @@
+/* Основной стиль футера */
+.footer {
+    background-color: #1e1e1e; /* Тёмный фон */
+    color: #7e7e7e; /* Белый текст */
+    text-align: center;
+    padding: 20px 10px;
+    border-top: 3px solid #414141; /* Линия сверху */
+    border-radius: 100px;
+}
+
+/* Контент футера */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Ссылки в футере */
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #8178d0; /* Зеленый цвет ссылок */
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff; /* Белый цвет при наведении */
+}
+
+/* Текст копирайта */
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}
